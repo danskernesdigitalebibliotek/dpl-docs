@@ -1,0 +1,35 @@
+name: Build and publish docs
+
+on:
+  # Run every 6th hour at nn:25 starting at 01:00 (1:25, 7:25, 13:25, 19:25)
+  schedule:
+    - cron:  '25 1/6 * * *'
+  # Trigger on pushes to main.
+  push:
+    branches:
+      - main
+  # Trigger when opening PRs (but do not deploy, see below)
+  pull_request:
+    branches: [main]
+  # Allow to manually trigger workflow from the GH UI.
+  workflow_dispatch:
+
+jobs:
+  build_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install python requirements
+        run: |
+          pip install -r ./requirements.txt \
+          && \
+          pip list
+      - name: Build mkdocs release
+        run: mkdocs build
+      # Do not deploy to GH Pages when this is a pull request.
+      - name: Deploy to GitHub Pages
+        if: ${{ github.event_name != 'pull_request' }}
+        run: mkdocs gh-deploy --force --clean --verbose
