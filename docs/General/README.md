@@ -53,3 +53,9 @@ be configured in
 - [mkdocs
   material](https://squidfunk.github.io/mkdocs-material/getting-started/)
 - [multirepo-plugin](https://github.com/jdoiro3/mkdocs-multirepo-plugin)
+
+### Docker compose setup
+
+For those not able or wanting to install Python packages on their
+machine, there's a rudimentary `docker-compose.yml` file that'll bring
+up a container running `mkdocs serve` on the usual HTTP port.
