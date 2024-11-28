@@ -1,0 +1,14 @@
+services:
+  mkdocs:
+    image: python:3-alpine
+    volumes:
+      - ./:/docs
+    stdin_open: true
+    tty: true
+    working_dir: /docs
+    # This could be more efficient, but it works.
+    command: 'sh -c "apk add bash git && pip install --no-cache-dir -r requirements.txt && mkdocs serve -a 0.0.0.0:80"'
+    environment:
+      VIRTUAL_HOST: "${COMPOSE_PROJECT_NAME:-dpl-docs}.${DEV_TLD:-docker}"
+
+    

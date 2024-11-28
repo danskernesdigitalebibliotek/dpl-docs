@@ -1,12 +1,15 @@
 site_name: DDF/DPL Documentation
 
+extra_css:
+  - stylesheets/extra.css
+
 theme:
   name: material
   palette:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: blue
+      primary: custom
       accent: red
       toggle:
         icon: material/toggle-switch
@@ -15,7 +18,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: blue
+      primary: custom
       accent: red
       toggle:
         icon: material/toggle-switch-off-outline
