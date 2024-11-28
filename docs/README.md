@@ -1,9 +1,10 @@
 # About
 
 This is the main documentation site for [Danish Public
-Libraries](https://detdigitalefolkebibliotek.dk/) projects. These
-projects cover the software driving the website of (most of) Danish
-public libraries, and assorted projects to host and support the sites.
+Libraries](https://detdigitalefolkebibliotek.dk/) (aka DPL) projects.
+These projects cover the software driving the website of (most of)
+Danish public libraries, and assorted projects to host and support the
+sites.
 
 This site contains general DPL and cross repository documentation and
 consolidates documentation from individual repositories.
