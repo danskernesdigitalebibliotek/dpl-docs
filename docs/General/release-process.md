@@ -7,7 +7,9 @@ it's done in that order, due to the dependencies between the projects.
 In the following you'll need to use the "Bypass branch protection"
 option when merging to skip having someone review the changes.
 
-# [Design system](https://github.com/danskernesdigitalebibliotek/dpl-design-system)
+# Creating the release
+
+## [Design system](https://github.com/danskernesdigitalebibliotek/dpl-design-system)
 
 1. Create a pull request from the `develop` branch against `main`.
 2. Wait for Github Actions to run and turn green.
@@ -23,7 +25,7 @@ release](https://github.com/danskernesdigitalebibliotek/dpl-design-system/releas
         publishing the release.
 
 
-## Update DPL React for local development
+### Update DPL React for local development
 
 These steps are not critical for release, but are required for
 developers to get the latest version of the design system when
@@ -48,7 +50,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 6. Wait for actions to turn green.
 7. Merge the pull request.
 
-# [DPL React](https://github.com/danskernesdigitalebibliotek/dpl-react)
+## [DPL React](https://github.com/danskernesdigitalebibliotek/dpl-react)
 
 1. Create a pull request from the `develop` against `main`.
 2. Wait for actions to go green.
@@ -57,7 +59,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
    release](https://github.com/danskernesdigitalebibliotek/dpl-react/releases/new)
    in the same way as with the Design system.
 
-# [DPL CMS](https://github.com/danskernesdigitalebibliotek/dpl-cms)
+## [DPL CMS](https://github.com/danskernesdigitalebibliotek/dpl-cms)
 
 1. Create a new branch locally from `develop` (remember to `git pull` first).
 2. Merge `main` into your branch.
@@ -75,15 +77,19 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 11. [Create a new
     release](https://github.com/danskernesdigitalebibliotek/dpl-cms/releases/new)
     in the same way as with the Design system.
+    
+# Deployment and announcement
 
-# Deployment to staging
+After creating a release, there's only a few housecleaning tasks left.
+
+## Deployment to staging
 
 In order to deploy the new release to staging so that DDF can test it,
 refer to [Platform
 runbook](../../DPL-Platform/runbooks/how-release-a-new-version-for-approval-testing/).
 This will require access to Azure in order to run the deployment.
 
-# JIRA and communication
+## JIRA and communication
 
 That was the technical part, now you need to tell somebody about your
 shiny new release.
