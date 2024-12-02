@@ -7,8 +7,7 @@ it's done in that order, due to the dependencies between the projects.
 In the following you'll need to use the "Bypass branch protection"
 option when merging to skip having someone review the changes.
 
-# Design system
-https://github.com/danskernesdigitalebibliotek/dpl-design-system
+# [Design system](https://github.com/danskernesdigitalebibliotek/dpl-design-system)
 
 1. Create a pull request from the `develop` branch against `main`.
 2. Wait for Github Actions to run and turn green.
@@ -48,9 +47,7 @@ https://github.com/danskernesdigitalebibliotek/dpl-react
 6. Wait for actions to turn green.
 7. Merge the pull request.
 
-# DPL React
-
-https://github.com/danskernesdigitalebibliotek/dpl-react
+# [DPL React](https://github.com/danskernesdigitalebibliotek/dpl-react)
 
 1. Create a pull request from the `develop` against `main`.
 2. Wait for actions to go green.
@@ -59,7 +56,7 @@ https://github.com/danskernesdigitalebibliotek/dpl-react
    release](https://github.com/danskernesdigitalebibliotek/dpl-react/releases/new)
    in the same way as with the Design system.
 
-# DPL CMS
+# [DPL CMS](https://github.com/danskernesdigitalebibliotek/dpl-cms)
 
 1. Create a new branch locally from `develop` (remember to `git pull` first).
 2. Merge `main` into your branch.
