@@ -23,16 +23,17 @@ release](https://github.com/danskernesdigitalebibliotek/dpl-design-system/releas
         publishing the release.
 
 
-# Update DPL React for local development
+## Update DPL React for local development
 
 These steps are not critical for release, but are required for
 developers to get the latest version of the design system when
 developing.
 
-You might not have the required permissions for this step, in that
-case, continue to releasing DPL React and return to this later.
+In order to update the dependencies, you need to be [authenticated
+with the GitHub NPM package
+repository](https://danskernesdigitalebibliotek.github.io/dpl-docs/DPL-React/#requirements).
 
-https://github.com/danskernesdigitalebibliotek/dpl-react
+In https://github.com/danskernesdigitalebibliotek/dpl-react:
 
 1. Create a new branch locally from `develop` (remember to `git pull` first).
 2. Ensure you're using the right version of `node`. You can use `nvm
