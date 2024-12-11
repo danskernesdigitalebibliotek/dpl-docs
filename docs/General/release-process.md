@@ -100,12 +100,10 @@ and
 [Brahma](https://reload.atlassian.net/jira/software/c/projects/DDFBRA/boards/498)
 projecs in Jira (this obviously requires Jira access).
 
-1. Go into the active sprint board.
-2. Select all tickets in the done column which are not tasks and does
-   not have a fix version (board quick filters can help with this).
-3. Add a new fix version with the release version to them (bulk change can help).
-4. Mark the release as released.
-5. When the release has been [deployed to
+1. Rename the `upcoming` release to the released version.
+2. Mark the release as released.
+3. Create a new unrelased `upcoming` release if it doesn't happen automatically.
+4. When the release has been [deployed to
    staging](#deployment-to-staging), tell DDF by creating a new topic
    in the the `#DDF+` Zulip channel with the release name in the
    subject and links to the release on staging and the release notes
