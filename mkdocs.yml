@@ -90,6 +90,9 @@ plugins:
         - section: DPL React
           # you can define the edit uri path
           import_url: 'https://github.com/danskernesdigitalebibliotek/dpl-react?branch=develop'
+        - section: DPL Go
+          # you can define the edit uri path
+          import_url: 'https://github.com/danskernesdigitalebibliotek/dpl-go?branch=main'
 
 extra:
   social:
