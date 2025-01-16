@@ -21,4 +21,5 @@ consolidates documentation from individual repositories.
   The Lagoon and Kubernetes based hosting platform which hosts the production and development sites.
 - [DPL React](DPL-React/)
   The React components used by the CMS.
-  
+- [DPL Go](DPL-Go/)
+  The library website focused on kids and teenagers.
