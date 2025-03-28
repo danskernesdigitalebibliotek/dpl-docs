@@ -78,9 +78,10 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
     release](https://github.com/danskernesdigitalebibliotek/dpl-cms/releases/new)
     in the same way as with the Design system.
     
-# Deployment and announcement
+# Deployment to staging and announcement
 
-After creating a release, there's only a few housecleaning tasks left.
+After creating a release, the torch passes to the DDF team to test and
+approve the release before the final deployment to production.
 
 ## Deployment to staging
 
@@ -111,3 +112,29 @@ projecs in Jira (this obviously requires Jira access).
    at past release announcements in Zulip for an
    [example](https://reload.zulipchat.com/#narrow/channel/419623-DDF.2B/topic/Release.202024.2E46.2E0/near/482035323)
    
+# Deployment to production
+
+When DDF has tested and approved the new release, they will annouce it
+in the above mentioned topic.
+
+The deployment to production is mostly handled by the platform team,
+but it's occasionally taken care of by the development team.
+
+The procedure is described in the
+[runbook](../../DPL-Platform/runbooks/weekly-release-to-editors-and-moduletests/).
+
+As the deployment takes some time, it's important to post updates to
+the topic to keep DDF in the loop. In particular:
+
+* Who's doing what.
+* When they're doing it (when starting, with occasional status
+  updates).
+* What they're doing (deploying sites, redeploying failed deploys,
+  syncing moduletest sites).
+* When they're interrupted (taking a pause to go home to carry on, for
+  instance).
+* When it's done.
+
+See [Release
+2025.4.0](https://reload.zulipchat.com/#narrow/channel/419623-DDF.2B/topic/Release.202025.2E4.2E0)
+for an example.
