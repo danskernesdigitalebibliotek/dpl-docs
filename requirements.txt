@@ -1,2 +1,2 @@
-mkdocs-material==9.6.11
+mkdocs-material==9.6.13
 mkdocs-multirepo-plugin==0.8.3
