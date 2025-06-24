@@ -71,7 +71,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 ## [DPL CMS](https://github.com/danskernesdigitalebibliotek/dpl-cms)
 
 1. Create a new branch locally from `develop` (remember to `git pull` first).
-2. Merge `main` into your branch.
+2. Merge `main` into your branch. (remember to `git pull` main first).
 3. Update the version of the Design System used: `RELEASE=[version]
    VERSION=[version] task dev:composer:update-design-system`. Refer to
    `task dev:composer:update-design-system --summary` if needed.
