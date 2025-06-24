@@ -1,7 +1,7 @@
 # Release process
 
 Creating a new release involves creating a new release of the design
-system, the react components and the CMS itself. It's important that
+system, the react components, the Go application and the CMS itself. It's important that
 it's done in that order, due to the dependencies between the projects.
 
 In the following you'll need to use the "Bypass branch protection"
@@ -59,6 +59,15 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
    release](https://github.com/danskernesdigitalebibliotek/dpl-react/releases/new)
    in the same way as with the Design system.
 
+## [DPL Go](https://github.com/danskernesdigitalebibliotek/dpl-go)
+
+1. Create a pull request from the `develop` against `main`.
+2. Wait for actions to go green.
+3. Merge pull request.
+4. [Create a new
+   release](https://github.com/danskernesdigitalebibliotek/dpl-go/releases/new)
+   in the same way as with the Design system.
+
 ## [DPL CMS](https://github.com/danskernesdigitalebibliotek/dpl-cms)
 
 1. Create a new branch locally from `develop` (remember to `git pull` first).
@@ -77,7 +86,13 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 11. [Create a new
     release](https://github.com/danskernesdigitalebibliotek/dpl-cms/releases/new)
     in the same way as with the Design system.
-    
+
+Note: One might wonder where the Go application is handled in this process.
+The answer to that is: Go is not being handled here.
+The Go version is set in the [sites.yaml](https://github.com/danskernesdigitalebibliotek/dpl-platform/blob/main/infrastructure/environments/dplplat01/sites.yaml)
+file in the [DPl Platform project](https://github.com/danskernesdigitalebibliotek/dpl-platform/tree/main).
+So the Go version of each site is determined by its `go-release` property in `sites.yaml`
+
 # Deployment to staging and announcement
 
 After creating a release, the torch passes to the DDF team to test and
