@@ -24,7 +24,7 @@ to monitor vendor code and create pull requests in case there are updates.
 When handling a pull request created by Dependabot the developer handling the
 pull requests does the following:
 
-1. Consider the risk of the update. High risk updates require are less
+1. Consider the risk of the update. High risk updates are less
    likely to be merged directly. We consider the following factors when 
    determining risk:
    - **Update level**: Major releases are more risky than minor and patch 
