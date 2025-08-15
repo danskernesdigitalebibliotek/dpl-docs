@@ -63,8 +63,9 @@ We configure Dependabot with the following properties:
 - **Schedule**: Vendors should be checked weekly at night between sunday and 
   monday. This ensures updates occur frequently and on a regular basis across
   all projetcs.
-- **Limit**: Open pull requests should be limited to 10 to avoid cluttering the
-  list of pull requests.
+- **Limit**: By default we do not limit the number of pull requests. For some 
+  projects creating many pull requests risk affecting other resources.
+  This may warrant a limit on pull requests and/or additional grouping.
 - **Groups**
   - In general keep groups to a minimum. This avoids creating pull requests
     which cannot be merged directly due to a single vendor causing status
@@ -78,6 +79,3 @@ We configure Dependabot with the following properties:
 - **Versioning strategy**: [The minimum version should always be set to the 
   latest version](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#versioning-strategy--).
   This prevents accidental downgrades.
-
-For some projects creating many pull requests risk affecting other resources.
-This may warrant a lower limit on pull requests or additional grouping.
