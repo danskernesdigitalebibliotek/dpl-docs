@@ -81,3 +81,17 @@ We configure Dependabot with the following properties:
 - **Versioning strategy**: [The minimum version should always be set to the 
   latest version](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference#versioning-strategy--).
   This prevents accidental downgrades.
+
+## Updating a Dependency
+
+If we update a dependency manually we do the following:
+
+1. Create a ticket in JIRA. If a ticket for the update has already been created
+   through our Dependabot workflow we move it to the current project. If not
+   then we create a new one with similar information as [when it is created 
+   from a Dependabot update](#handling-pull-requests)
+2. Update the dependency using our standard development process. The pull 
+   request must not contain unrelated changes to ensure the integrity of the 
+   project.
+3. [If the change is not considered risky](#handling-pull-requests) then we
+   merge the pull request after internal review without further testing.
