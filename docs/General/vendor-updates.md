@@ -44,6 +44,7 @@ pull requests does the following:
       in question. If a new major version is failing we may still want to 
       include minor and patch releases.
    2. Create an issue in JIRA with the following information:
+      - **Type**: Task
       - **Title**: *Opgrader [vendor project name] ([DDF project name])*
       - **Description**:
         - A short description of the library, the role it plays 
@@ -53,6 +54,7 @@ pull requests does the following:
           the person handling the update in the future. 
         - Reference to the added ignore configuration (4.1) which must be 
           deleted after the update.
+      - **Project**: DDFNEXT
       - **Sprint**: *Opdateringer*
    3. Close the Dependabot pull request.
 
