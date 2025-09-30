@@ -11,7 +11,7 @@ option when merging to skip having someone review the changes.
 
 ## [Design system](https://github.com/danskernesdigitalebibliotek/dpl-design-system)
 
-1. Create a pull request from the `develop` branch against `main`.
+1. [Create a pull request from the `develop` branch against `main`.](https://github.com/danskernesdigitalebibliotek/dpl-design-system/compare/main...develop)
 2. Wait for Github Actions to run and turn green.
 3. Merge the pull request.
 4. [Create a new
@@ -52,7 +52,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 
 ## [DPL React](https://github.com/danskernesdigitalebibliotek/dpl-react)
 
-1. Create a pull request from the `develop` against `main`.
+1. [Create a pull request from the `develop` against `main`.](https://github.com/danskernesdigitalebibliotek/dpl-react/compare/main...develop)
 2. Wait for actions to go green.
 3. Merge pull request.
 4. [Create a new
@@ -61,7 +61,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 
 ## [DPL Go](https://github.com/danskernesdigitalebibliotek/dpl-go)
 
-1. Create a pull request from the `develop` against `main`.
+1. [Create a pull request from the `develop` against `main`.](https://github.com/danskernesdigitalebibliotek/dpl-go/compare/main...develop)
 2. Wait for actions to go green.
 3. Merge pull request.
 4. [Create a new
@@ -80,7 +80,7 @@ In https://github.com/danskernesdigitalebibliotek/dpl-react:
 5. Commit, push your branch and create a pull request against `develop`.
 6. Wait for actions to go green.
 7. Merge your pull request.
-8. Create a new pull request from `develop` against `main`.
+8. [Create a new pull request from `develop` against `main`](https://github.com/danskernesdigitalebibliotek/dpl-dcms/compare/main...develop).
 9. Wait for actions to go green.
 10. Merge your pull request.
 11. [Create a new
