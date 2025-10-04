@@ -1,0 +1,5807 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../../guides/nextjs-cache-invalidation/">
+      
+      
+        <link rel="next" href="../../../../DPL-Platform/">
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.18">
+    
+    
+      
+        <title>Unilogin & Publizon_- models and relations - DDF/DPL Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="red">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#unilogin-publizon_-models-and-relations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="DDF/DPL Documentation" class="md-header__button md-logo" aria-label="DDF/DPL Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            DDF/DPL Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Unilogin &amp; Publizon_- models and relations
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="red"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="red"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/danskernesdigitalebibliotek" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DPL-CMS/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DPL CMS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DPL-Design-System/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DPL Design System
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DPL Go
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DPL-Platform/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DPL Platform
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../DPL-React/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  DPL React
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../General/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  General
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="DDF/DPL Documentation" class="md-nav__button md-logo" aria-label="DDF/DPL Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    DDF/DPL Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/danskernesdigitalebibliotek" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    About
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-CMS/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DPL CMS
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            DPL CMS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/api-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    API Development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/bnf-import-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BNF: Content import/export
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/bnf/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Bibliotekernes Nationale Formidling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Caching
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/code-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/config-import/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration import
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/configuration-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/event-field-config/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event field configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/event-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Event integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/example-content/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Example content
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/lagoon-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lagoon environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/local-development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Local development
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Logging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/page-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Page objects in Cypress tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/permissions-and-roles/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Permissions and roles
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/translation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Translation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/webmaster-libraries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Webmaster libraries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/webmaster-modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Webmaster modules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_21" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-CMS/architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_21" id="__nav_2_21_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_21_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_21">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-001a-configuration-management-OLD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Configuration Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-001b-configuration-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Configuration Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-002-user-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: User Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-003-ddb-react-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: DPL React integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-004-ddb-react-caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Caching of DPL React and other js resources
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-005-api-mocking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: API mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-006-api-specification/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: API specification
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-007-breadcrumb-and-url-patterns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Breadcrumb structure &amp; URL patterns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-007-cypress-functional-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Cypress for functional testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-008-external-system-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Integration with external systems
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-009-translation-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Translation system
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-010-recurring-events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Recurring events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-011-configuration-translation-system/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Configuration translation system
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-012-api-versioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: API versioning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-013-javascript-logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: JavaScript logging
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-014-delingstjenesten/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Delingstjenesten
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-015-go-cms-intersite-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Links between Go and CMS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/architecture/adr-016-page-objects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Page objects in Cypress E2E tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_22" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_22" id="__nav_2_22_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_22_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_22">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/guides/alternative-lagoon-file-transfer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alternative Lagoon File Transfer Runbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-CMS/guides/bnf-debugging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Debugging BNF content synchronization
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Design-System/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DPL Design System
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            DPL Design System
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Design-System/Icon-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Icon Usage Guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Design-System/layout-documentation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Layout documentation &amp; Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Design-System/scss/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SCSS strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Design-System/architecture/adr-001-skeleton-screens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Skeleton Screens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Design-System/architecture/adr-002-form-styling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Form Styling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DPL Go
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            DPL Go
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../authentication/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Authentication
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../expexted-session-behaviour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Expected session behaviour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_4" id="__nav_4_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-001-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-002-xstate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Xstate
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-003-error-boundaries/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Error boundaries
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-004-env-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Env variables
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-005-dual-login-and-publizon-adapter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Dual Login and Publizon Adapter
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-006-mock-data/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-007-server-mocking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Server side mocking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-008-third-party-service-caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    3rd Party Service Cache Handling in Go
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/adr-009-fb-cms-caching/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FB CMS Content and Configuration Cache Handling in Go
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            Guides
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/create-new-test/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Creating a new Cypress test
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/git-branch-development-demo-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Runbook: Git Branch Strategy and workflow for Development and Demoing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/grafana-lookups/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Grafana Lookups Runbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/lagoon-environment-variables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lagoon Environment Variables Runbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/nextjs-cache-invalidation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NextJS Cache Invalidation Runbook
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Research
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Research
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_6_1" id="__nav_4_6_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Ereolengo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_6_1">
+            <span class="md-nav__icon md-icon"></span>
+            Ereolengo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Unilogin &amp; Publizon_- models and relations
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unilogin &amp; Publizon_- models and relations
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#session-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dinguniloginuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginUser
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publizon-libraries-local-db-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publizon Libraries (local db table)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#institutions-og-municipalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Institutions og municipalities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Institutions og municipalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#institutionids" class="md-nav__link">
+    <span class="md-ellipsis">
+      institutionIds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#municipalitiesids" class="md-nav__link">
+    <span class="md-ellipsis">
+      municipalitiesIds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#librarylibraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library/libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Library/libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-usagemeaning-of-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      The usage/meaning of a library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unilogin-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unilogin services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unilogin services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-class-dinguniloginservicebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base class: DingUniloginServiceBase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dinguniloginwsibruger-unilogin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginWSIbruger (Unilogin API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DingUniloginWSIbruger (Unilogin API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsdl-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSDL Url
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dinguniloginwsiinst-unilogin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginWSIinst (Unilogin API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DingUniloginWSIinst (Unilogin API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsdl-url_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSDL Url
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizon-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publizon services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publizon services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-class-publizonclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base class: PublizonClient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizonuserclient-publizon-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublizonUserClient (Publizon API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PublizonUserClient (Publizon API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getsupportid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getSupportId
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizonloanclient-publizon-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublizonLoanClient (Publizon API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PublizonLoanClient (Publizon API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createloan" class="md-nav__link">
+    <span class="md-ellipsis">
+      createLoan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlibraryuserorderlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLibraryUserOrderList
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login flows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Login flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unilogin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unilogin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unilogin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DPL Platform
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            DPL Platform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Backup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/code-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Code guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/dns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    DNS setup for library sites
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/lagoon-projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lagoon projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/maintenance-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maintenance plan
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/platform-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current Platform environments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/alertmanager-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Alertmanager Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/performance-strategy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Performance strategy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/platform-environment-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    A DPL Platform environment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_8_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/architecture/adr/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Adr
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_8_5" id="__nav_5_8_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            Adr
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-001-lagoon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Lagoon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-002-rightsizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Rightsizing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-003-system-alerts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADR-003 System alerts
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-004-declarative-site-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADR 004: Declarative Site management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-005-declarative-site-management-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADR 005: Declarative Site management (2)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/architecture/adr/adr-006-in-cluster-db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ADR 006: In-cluster Database
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/infrastructure/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Infrastructure
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Infrastructure
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_9_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/infrastructure/terraform/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Terraform
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            Terraform
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-Platform/runbooks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Runbooks
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            Runbooks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/access-kubernetes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Access Kubernetes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/add-generic-site-to-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Add a generic site to the platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/add-library-site-to-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Add a new library site to the platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/changing-and-releasing-new-dplsh-version/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Make changes to DPLSH
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/connecting-the-lagoon-cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Connecting the Lagoon CLI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/fix-challenges-stuck-in-cert-manager/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fix challenges stuck in Cert-manager
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/how-release-a-new-version-for-approval-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy new release for approval testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/monthly-release-to-editors-and-webmasters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Monthly release to editors and webmasters
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/rabbitmq-broker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RabbitMQ broker force start
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/remove-site-from-platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Removing a site from the platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/reset-moduletest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reset moduletest site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/retrieve-restore-backup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retrieving backups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/retrieve-sites-logs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Retrieve site logs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/run-a-lagoon-task/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Run a Lagoon Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/scale-aks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Scaling AKS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/set-environment-variable/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Set an environment variable for a site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/troubleshoot-release-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/troubleshoot-statuscake-monitor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshoot StatusCake alert
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/ui-reset-moduletest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI: Reset moduletest site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/ui-sync-site-state/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI: Synchronize site state
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/update-upgrade-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Update the support workload upgrade status
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/upgrading-aks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrading AKS
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/upgrading-lagoon/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrading Lagoon
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/upgrading-support-workloads/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Upgrading Support Workloads
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/using-dplsh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using the DPL Shell
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-Platform/runbooks/weekly-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Deploy new version to editors and webmaster moduletests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-React/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    DPL React
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            DPL React
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/campaigns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Campaigns
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/code_guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Code guidelines
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/error_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Error Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/fbs-adapter-client/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FBS adapter client
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/request_mocking_wiremock/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Request mocking / Wiremock
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/skeleton_screens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Skeleton screens
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/ui_text_handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI Text Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../DPL-React/architecture/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Architecture
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6_9" id="__nav_6_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_9">
+            <span class="md-nav__icon md-icon"></span>
+            Architecture
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-001-rehydration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Rehydration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-002-ui-text-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UI Text Handling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-003-downshift/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Downshift
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-004-relative-ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    RelativeCI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-005-react-use/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    React Use
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-006-unit-tests/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Unit Tests
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-007-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Configuration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-008-error-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Architecture Decision Record: Error handling in the React Apps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../DPL-React/architecture/adr-009-remove-airbnb-lint-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Removal of Airbnb Linting Rules
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../General/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    General
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            General
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../General/documentation-site/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Documentation Site
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../General/extraordinary-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Extraordinary releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../General/release-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Release process
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../General/vendor-updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Vendor updates
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#session-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dinguniloginuser" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginUser
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publizon-libraries-local-db-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publizon Libraries (local db table)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#institutions-og-municipalities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Institutions og municipalities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Institutions og municipalities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#institutionids" class="md-nav__link">
+    <span class="md-ellipsis">
+      institutionIds
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#municipalitiesids" class="md-nav__link">
+    <span class="md-ellipsis">
+      municipalitiesIds
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#librarylibraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library/libraries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Library/libraries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-usagemeaning-of-a-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      The usage/meaning of a library
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unilogin-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unilogin services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unilogin services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-class-dinguniloginservicebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base class: DingUniloginServiceBase
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dinguniloginwsibruger-unilogin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginWSIbruger (Unilogin API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DingUniloginWSIbruger (Unilogin API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsdl-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSDL Url
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dinguniloginwsiinst-unilogin-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      DingUniloginWSIinst (Unilogin API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DingUniloginWSIinst (Unilogin API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wsdl-url_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSDL Url
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#actions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Actions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizon-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publizon services
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publizon services">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#base-class-publizonclient" class="md-nav__link">
+    <span class="md-ellipsis">
+      Base class: PublizonClient
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizonuserclient-publizon-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublizonUserClient (Publizon API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PublizonUserClient (Publizon API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#getsupportid" class="md-nav__link">
+    <span class="md-ellipsis">
+      getSupportId
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publizonloanclient-publizon-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      PublizonLoanClient (Publizon API)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PublizonLoanClient (Publizon API)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methods_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Methods
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#createloan" class="md-nav__link">
+    <span class="md-ellipsis">
+      createLoan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getlibraryuserorderlist" class="md-nav__link">
+    <span class="md-ellipsis">
+      getLibraryUserOrderList
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#login-flows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Login flows
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Login flows">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unilogin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unilogin
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unilogin">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      4)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="unilogin-publizon_-models-and-relations">Unilogin &amp; Publizon_- models and relations<a class="headerlink" href="#unilogin-publizon_-models-and-relations" title="Permanent link">&para;</a></h1>
+<h2 id="session-handling">Session handling<a class="headerlink" href="#session-handling" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>erDiagram
+  UniloginAccessToken {
+      string accessToken
+      int expires
+      string refreshToken
+      int values__refresh_expires_in
+      int values__id_token
+  }</code></pre>
+<h2 id="dinguniloginuser">DingUniloginUser<a class="headerlink" href="#dinguniloginuser" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>erDiagram
+    DingUniloginUser {
+        string name
+        string authname
+        string wsuser
+        string wspass
+        string_array institutionsIds
+        int_array municipalityIds
+        object_array institutions
+    }</code></pre>
+<p><code>name</code> is the same as the Unilogin username</p>
+<h2 id="publizon-libraries-local-db-table">Publizon Libraries (local db table)<a class="headerlink" href="#publizon-libraries-local-db-table" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>erDiagram
+    publizon_libraries {
+      string retailer_id
+      string library_name
+      string unilogin_id
+      string retailer_key_code
+      string subscribed_users
+      string municipality_id
+    }</code></pre>
+<h2 id="institutions-og-municipalities">Institutions og municipalities<a class="headerlink" href="#institutions-og-municipalities" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>erDiagram
+    institution {
+      string instnr
+      string instnavn
+      string type
+      string typenavn
+      string adresse
+      string bynavn
+      string postnr
+      string telefonnr
+      string mailadresse
+      string www
+      int kommunenr
+    }</code></pre>
+<h3 id="institutionids">institutionIds<a class="headerlink" href="#institutionids" title="Permanent link">&para;</a></h3>
+<p>Institution ids are collected via the <code>DingUniloginWSIbruger</code> client via <code>hentBrugersInstitutionsTilknytninger</code> SOAP service</p>
+<h3 id="municipalitiesids">municipalitiesIds<a class="headerlink" href="#municipalitiesids" title="Permanent link">&para;</a></h3>
+<p>Municipalities is only represented as id's.</p>
+<p>Municipalities are fetched via the <code>DingUniloginUser::getInstitutionMunicipalities(institutionIds)</code> method:</p>
+<ul>
+<li>Fake municipalities are established via <code>_ding_unilogin_get_nonstitution_municipalities</code> that gets its data from: <code>_ding_unilogin_get_nonstitutions</code> that gets the institutions from a setting (variable) called: <code>ding_unilogin_nonstitutions</code></li>
+<li>InstitutionIds are iterated and every institution is fetched by the <code>DingUniloginWSIinst</code> client via the <code>hentInstitution</code> service</li>
+<li>If a fake institution exists with current institutionId then use the <code>kommunenr</code> from that</li>
+<li>(side effect) <code>DingUniloginUser.institutions</code> are being populated in the iteration with the institution</li>
+<li><code>insititution.kommunenr</code> is added to the <code>municipalityIds</code> array</li>
+<li>The <code>municipalityIds</code> array is set on <code>DingUniloginUser.municipalityIds</code></li>
+<li>The <code>municipalityIds</code> array is being returned</li>
+</ul>
+<h2 id="librarylibraries">Library/libraries<a class="headerlink" href="#librarylibraries" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>erDiagram
+    PublizonConfiguredLibrary {
+      int retailer_id
+      string library_name
+      string unilogin_id
+      string municipality_id
+      string retailer_key_code
+      string subscribed_users
+    }</code></pre>
+<p>Libraries (<code>PublizonConfiguredLibrary</code>) are stored in the db in the table: <code>publizon_libraries</code> they are fetched by the function: <code>publizon_get_libraries()</code> which keys them by <code>retailer_id</code>.</p>
+<p>Afterwards the libraries are being filtered by the municipalities connected to the user.</p>
+<h3 id="the-usagemeaning-of-a-library">The usage/meaning of a library<a class="headerlink" href="#the-usagemeaning-of-a-library" title="Permanent link">&para;</a></h3>
+<p>If there is multiple libraries connected to the user, only the first one is being used.</p>
+<p>The unilogin_id from the library is being tied to the Drupal user and is being used in future contexts.</p>
+<h2 id="services">Services<a class="headerlink" href="#services" title="Permanent link">&para;</a></h2>
+<h3 id="unilogin-services">Unilogin services<a class="headerlink" href="#unilogin-services" title="Permanent link">&para;</a></h3>
+<h4 id="base-class-dinguniloginservicebase">Base class: DingUniloginServiceBase<a class="headerlink" href="#base-class-dinguniloginservicebase" title="Permanent link">&para;</a></h4>
+<p>Uses two methods: <code>call</code> and <code>callWithAuth</code> depending on if the request needs authentication</p>
+<p><code>callWithAuth</code> uses wsuser and wspasswd tied to the <code>DingUniloginUser</code> object</p>
+<h4 id="dinguniloginwsibruger-unilogin-api">DingUniloginWSIbruger (Unilogin API)<a class="headerlink" href="#dinguniloginwsibruger-unilogin-api" title="Permanent link">&para;</a></h4>
+<h5 id="wsdl-url">WSDL Url<a class="headerlink" href="#wsdl-url" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>https://wsibruger.unilogin.dk/wsibruger-v6/ws?WSDL
+</span></code></pre></div>
+<h5 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">&para;</a></h5>
+<p><strong>hentBrugersInstitutionsTilknytninger</strong>: Finds institutions connected to a user.</p>
+<hr />
+<h4 id="dinguniloginwsiinst-unilogin-api">DingUniloginWSIinst (Unilogin API)<a class="headerlink" href="#dinguniloginwsiinst-unilogin-api" title="Permanent link">&para;</a></h4>
+<h5 id="wsdl-url_1">WSDL Url<a class="headerlink" href="#wsdl-url_1" title="Permanent link">&para;</a></h5>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>https://wsiinst.unilogin.dk/wsiinst-v5/ws?WSDL
+</span></code></pre></div>
+<h5 id="actions_1">Actions<a class="headerlink" href="#actions_1" title="Permanent link">&para;</a></h5>
+<p><strong>hentInstitution</strong>: Loads a institution given its id.</p>
+<h3 id="publizon-services">Publizon services<a class="headerlink" href="#publizon-services" title="Permanent link">&para;</a></h3>
+<h4 id="base-class-publizonclient">Base class: PublizonClient<a class="headerlink" href="#base-class-publizonclient" title="Permanent link">&para;</a></h4>
+<p>Makes sure that following params are used as well:</p>
+<ul>
+<li>':languagecode': empty string</li>
+<li>':clientid': publizon client id</li>
+<li>':retailerid': retailer id tied to user (from library)</li>
+<li>':retailerkeycode': retailer id tied to user (from library)</li>
+</ul>
+<h4 id="publizonuserclient-publizon-api">PublizonUserClient (Publizon API)<a class="headerlink" href="#publizonuserclient-publizon-api" title="Permanent link">&para;</a></h4>
+<h5 id="methods">Methods<a class="headerlink" href="#methods" title="Permanent link">&para;</a></h5>
+<h6 id="getsupportid">getSupportId<a class="headerlink" href="#getsupportid" title="Permanent link">&para;</a></h6>
+<p><strong>Endpoint</strong>: get_friendly_cardnumber</p>
+<p><strong>Action</strong>: GetFriendlyCardnumber</p>
+<p><strong>Params</strong>: <code>pub:cardnumber</code> (uniid), <code>retailer_id</code> (from library)</p>
+<h4 id="publizonloanclient-publizon-api">PublizonLoanClient (Publizon API)<a class="headerlink" href="#publizonloanclient-publizon-api" title="Permanent link">&para;</a></h4>
+<h5 id="methods_1">Methods<a class="headerlink" href="#methods_1" title="Permanent link">&para;</a></h5>
+<h6 id="createloan">createLoan<a class="headerlink" href="#createloan" title="Permanent link">&para;</a></h6>
+<p><strong>Endpoint</strong>: createloan.asmx</p>
+<p><strong>Action</strong>: CreateLoan</p>
+<p><strong>Params</strong>: <code>pub:ebookid</code> (isbn), <code>retailer_id</code> (from library), <code>pub:cardnumber</code> (uniid (username)), <code>pub:pincode</code> (empty), <code>pub:institutionid</code>, <code>pub:format</code> (empty string), <code>pub:mobipocketid</code> (empty string), <code>pub:institutionTags</code> (array of <code>pub:string</code> =&gt; $institution_tags (often empty))</p>
+<hr />
+<h6 id="getlibraryuserorderlist">getLibraryUserOrderList<a class="headerlink" href="#getlibraryuserorderlist" title="Permanent link">&para;</a></h6>
+<p><strong>Endpoint</strong>: getlibraryuserorderlist.asmx</p>
+<p><strong>Action</strong>: GetLibraryUserOrderList</p>
+<p><strong>Params</strong>: <code>retailer_id</code> (from library), <code>pub:cardnumber</code> (uniid (username))</p>
+<h2 id="login-flows">Login flows<a class="headerlink" href="#login-flows" title="Permanent link">&para;</a></h2>
+<h3 id="unilogin">Unilogin<a class="headerlink" href="#unilogin" title="Permanent link">&para;</a></h3>
+<p>Login flow at Unilogin</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant US as Unilogin Services
+    participant EG as Ereolen GO
+
+    EG-&gt;&gt;US: User clicks login at Ereolen GO
+    US-&gt;&gt;EG: User authenticated
+    EG--&gt;&gt;US: Get access token *1
+    EG--&gt;&gt;US: Get user info
+    Note over EG: Access token sent as argument
+    Note over US: Most important data her is: uniid
+    EG-&gt;&gt;EG: DingUniloginUser instantiated
+    Note over EG: Username = Unilogin uniid
+    EG--&gt;&gt;US: Get institution ids tied to the user
+    EG--&gt;&gt;EG: Get Nonstitution Municipalities
+    Note over EG: Municipalites are stored in a variable called:&lt;br/&gt; ding_unilogin_nonstitutions *2
+    EG--&gt;&gt;EG: An array of municpalities is tied to the user *3
+    EG--&gt;&gt;US: Get Institution
+    Note over EG: For each institution ids tied to the user
+    EG--&gt;&gt;EG: Get library
+    Note over EG: Lookup in local DB table ("publizon_libraries") *4
+    EG--&gt;&gt;EG: Ding User Authenticate
+    Note over EG: library.unilogin_id is connected to the&lt;br/&gt; Ding user object in the extra.attributes.unilogin property
+    EG-&gt;&gt;EG: publizon_auth_single_sign_on
+    Note over EG: Retailer id and support id is added to Drupal user.data
+
+</code></pre>
+<h4 id="1">1)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
+<p>It seems like the access token is primarily used to fetch userinfo about user in not in subsequent calls like: getUserLoans performLoan etc.</p>
+<h4 id="2">2)<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
+<p>Only one nonstitution municipality is stored:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ding_unilogin_nonstitutions:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>A04441:
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>institution_id:<span class="w"> </span>A04441
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span>municipality_kommunenr:<span class="w"> </span><span class="s1">&#39;101&#39;</span>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span>municipality_kommune:<span class="w"> </span><span class="s1">&#39;101&#39;</span>
+</span></code></pre></div>
+<p>The municipality is represented in the <code>publizon_libraries</code> table:</p>
+<div class="language-mysql highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="o">+-------------+--------------+-------------+-------------------+------------------+-----------------+</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">|</span><span class="w"> </span><span class="n">retailer_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">library_name</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">unilogin_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">retailer_key_code</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">subscribed_users</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">municipality_id</span><span class="w"> </span><span class="o">|</span>
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="o">+-------------+--------------+-------------+-------------------+------------------+-----------------+</span>
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="o">|</span><span class="w"> </span><span class="mi">810</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">København</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="mi">101</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">xxxxxxxx</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mi">26915</span><span class="w">            </span><span class="o">|</span><span class="w"> </span><span class="mi">101</span><span class="w">             </span><span class="o">|</span>
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="o">+-------------+--------------+-------------+-------------------+------------------+-----------------+</span>
+</span></code></pre></div>
+<h4 id="3">3)<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
+<p>For every institution stored on user there is a <code>kommunenr</code> and is collected into a municipality array:</p>
+<div class="language-php highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="x"> $municipalityIds[] = $institution-&gt;kommunenr;</span>
+</span></code></pre></div>
+<p>However if an user institution is represented in <code>ding_unilogin_nonstitutions</code> the <code>kommunenr</code> is used from that.</p>
+<h4 id="4">4)<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
+<p>Get library by looking at the kommunenr of the first institution of the user</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../../guides/nextjs-cache-invalidation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: NextJS Cache Invalidation Runbook">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                NextJS Cache Invalidation Runbook
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../../DPL-Platform/" class="md-footer__link md-footer__link--next" aria-label="Next: DPL Platform Documentation">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                DPL Platform Documentation
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/det-digitale-folkebibliotek" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.top", "navigation.indexes", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.code.copy", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
