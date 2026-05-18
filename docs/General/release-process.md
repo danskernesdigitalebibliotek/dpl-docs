@@ -4,6 +4,8 @@ In the past, the release process was complicated, due to several GitHub repos, d
 
 Now, with the dpl-web mono-repo it's pretty easy.
 
+For non-scheduled hotfix releases, consult the [hotfix release documentation](hotfix-releases.md).
+
 # Creating the release
 
 1. [Create a pull request from the `develop` branch against `main`.](https://github.com/danskernesdigitalebibliotek/dpl-web/compare/main...develop)
