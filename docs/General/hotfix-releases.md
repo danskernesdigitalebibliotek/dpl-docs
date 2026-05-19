@@ -1,7 +1,7 @@
 # Hotfix releases
 
 Sometimes it may be necessary to create releases outside of [the standard 
-release process](release-process). Typical situations involve critical security 
+release process](release-process.md). Typical situations involve critical security
 updates or bug fixes. 
 
 The important part of this work is that such releases only include a limited set
