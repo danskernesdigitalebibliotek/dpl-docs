@@ -4,6 +4,8 @@ In the past, the release process was complicated, due to several GitHub repos, d
 
 Now, with the dpl-web mono-repo it's pretty easy.
 
+For non-scheduled hotfix releases, consult the [hotfix release documentation](hotfix-releases.md).
+
 # Creating the release
 
 1. [Create a pull request from the `develop` branch against `main`.](https://github.com/danskernesdigitalebibliotek/dpl-web/compare/main...develop)
@@ -40,15 +42,13 @@ This will require access to Azure in order to run the deployment.
 That was the technical part, now you need to tell somebody about your
 shiny new release.
 
-Do the following for both the
-[Hermod](https://reload.atlassian.net/jira/software/c/projects/DDFHER/boards/497)
-and
-[Brahma](https://reload.atlassian.net/jira/software/c/projects/DDFBRA/boards/498)
-projecs in Jira (this obviously requires Jira access).
+On the
+[DDF Jira board](https://reload.atlassian.net/jira/software/c/projects/DDF/boards/835)
+ (this obviously requires Jira access):
 
-1. Rename the `upcoming` release to the released version.
+1. Rename the `UPCOMING` release to the released version.
 2. Mark the release as released.
-3. Create a new unrelased `upcoming` release if it doesn't happen automatically.
+3. Create a new unrelased `UPCOMING` release if it doesn't happen automatically.
 4. When the release has been [deployed to
    staging](#deployment-to-staging), tell DDF by creating a new topic
    in the the `#DDF+` Zulip channel with the release name in the
