@@ -66,7 +66,7 @@ The deployment to production is mostly handled by the platform team,
 but it's occasionally taken care of by the development team.
 
 The procedure is described in the
-[runbook](../../DPL-Platform/runbooks/weekly-release-to-editors-and-moduletests/).
+[runbook](../../DPL-Platform/runbooks/weekly-release/).
 
 As the deployment takes some time, it's important to post updates to
 the topic to keep DDF in the loop. In particular:
