@@ -57,16 +57,26 @@ On the
    at past release announcements in Zulip for an
    [example](https://reload.zulipchat.com/#narrow/channel/419623-DDF.2B/topic/Release.202024.2E46.2E0/near/482035323)
    
-# Deployment to production
+# Approval and deployment preparation
 
 When DDF has tested and approved the new release, they will annouce it
 in the above mentioned topic.
+
+To simplify handover, the development team prepares the deployment
+pull request. This is the [pull request part of the release
+runbook](../../DPL-Platform/runbooks/weekly-release/#procedure-make-the-release-pull-request).
+
+For regular releases the deployment pull request should be handed over
+to the platform team the day before the deployment, so they can run it
+early in the day.
+
+# Deployment to production
 
 The deployment to production is mostly handled by the platform team,
 but it's occasionally taken care of by the development team.
 
 The procedure is described in the
-[runbook](../../DPL-Platform/runbooks/weekly-release/).
+[runbook](../../DPL-Platform/runbooks/weekly-release/#procedure-release-the-approved-release).
 
 As the deployment takes some time, it's important to post updates to
 the topic to keep DDF in the loop. In particular:
